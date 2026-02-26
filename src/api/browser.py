@@ -15,7 +15,7 @@ class BrowserSession:
 
     async def start(self) -> Page:
         self._playwright = await async_playwright().start()
-        self._browser = await self._playwright.chromium.launch(headless=False)
+        self._browser = await self._playwright.chromium.launch(headless=True)
         self.page = await self._browser.new_page()
         return self.page
 

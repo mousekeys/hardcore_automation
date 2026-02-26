@@ -29,7 +29,7 @@ class ServerController:
             world_row = self.page.locator("tr").filter(has=folder_link)
             await world_row.locator("button").last.click()
             await self.page.click('text=Delete')
-            await self.page.click('text=Delete')
+            await self.page.click('button:has-text("Delete files")')
             print(f"Deleted folder: {world_name}")
         except Exception as e:
             print(f"Error deleting world: {e}")

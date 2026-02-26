@@ -28,11 +28,11 @@ async def log_to_ui(text: str):
     log_area.code("\n".join(st.session_state.logs))
 
 
-with st.sidebar:
-    st.info(f"Target: {config.server.url}")
-    if st.button("Start Live Feed"):
-        asyncio.run(start_browser_bridge(log_to_ui, st.session_state.cmd_queue))
 
-cmd = st.text_input("Console Command")
-if st.button("Execute"):
-    st.session_state.cmd_queue.put_nowait(cmd)
+st.info(f"Target: {config.server.url}")
+if st.button("Start Live Feed"):
+    asyncio.run(start_browser_bridge(log_to_ui, st.session_state.cmd_queue))
+
+# cmd = st.text_input("Console Command")
+# if st.button("Execute"):
+#     st.session_state.cmd_queue.put_nowait(cmd)
