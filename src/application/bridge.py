@@ -1,7 +1,6 @@
 import yaml
 import asyncio
 from playwright.async_api import async_playwright
-import re
 from dotenv import load_dotenv
 import os
 
