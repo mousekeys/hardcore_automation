@@ -25,3 +25,7 @@ hardcore_plus:
     - "hit the ground"
     - "withered away"  
   max_logs: 100
+
+auth:
+  login_url: "https://www.powerupstack.com/auth/login"
+  panel_url: "https://www.powerupstack.com/panel/instances"

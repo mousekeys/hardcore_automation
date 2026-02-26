@@ -4,7 +4,7 @@ import pytest
 from pydantic import ValidationError
 from typing import Optional
 
-from schemas.config_schema import AppConfig
+from src.schemas.config_schema import AppConfig
 from pathlib import Path
 
 # resolves to the actual src/config.yaml regardless of where pytest is run from

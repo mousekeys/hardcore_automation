@@ -1,4 +1,4 @@
-from schemas.config_schema import AppConfig
+from src.schemas.config_schema import AppConfig
 
 def test_url_exists(base_url: str):
     """Basic sanity check — URL must be a valid HTTP address."""

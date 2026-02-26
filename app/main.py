@@ -1,11 +1,14 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import streamlit as st
 import asyncio
-import yaml
-from src.application.bridge import start_browser_bridge
+from src.bridge import start_browser_bridge
+from src.config_loader import get_config
 
-# Load YAML for UI display
-with open("config.yaml", "r") as f:
-    cfg = yaml.safe_load(f)
+config = get_config()
 
 st.set_page_config(page_title="Hardcore Plus Dashboard", layout="wide")
 st.title("Hardcore Plus Monitor")
@@ -17,14 +20,16 @@ if "cmd_queue" not in st.session_state:
 
 log_area = st.empty()
 
-async def log_to_ui(text):
+
+async def log_to_ui(text: str):
     st.session_state.logs.append(text)
-    if len(st.session_state.logs) > cfg['hardcore_plus']['max_logs']:
+    if len(st.session_state.logs) > config.hardcore_plus.max_logs:
         st.session_state.logs.pop(0)
     log_area.code("\n".join(st.session_state.logs))
 
+
 with st.sidebar:
-    st.info(f"Target: {cfg['server']['url']}")
+    st.info(f"Target: {config.server.url}")
     if st.button("Start Live Feed"):
         asyncio.run(start_browser_bridge(log_to_ui, st.session_state.cmd_queue))
 

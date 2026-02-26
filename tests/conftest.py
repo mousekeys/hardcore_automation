@@ -1,7 +1,7 @@
 import pytest
 
-from schemas.config_schema import AppConfig
-from tests.config_loader import get_config
+from src.schemas.config_schema import AppConfig
+from src.config_loader import get_config
 
 
 @pytest.fixture(scope="session")
