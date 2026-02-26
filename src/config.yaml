@@ -13,5 +13,15 @@ hardcore_plus:
   # The name of the world folder to delete
   world_folder: "world"
   # Keywords that trigger the reset
-  death_keywords: ["died", "slain", "shot by","burned to death","drowned","fell from a high place","blown up","tried to swim", "hit the ground","withered away"]
+  death_keywords:
+    - "died"
+    - "slain"
+    - "shot by"
+    - "burned to death"
+    - "drowned"
+    - "fell from a high place"
+    - "blown up"
+    - "tried to swim"
+    - "hit the ground"
+    - "withered away"  
   max_logs: 100

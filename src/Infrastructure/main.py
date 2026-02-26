@@ -1,7 +1,7 @@
 import streamlit as st
 import asyncio
 import yaml
-from bridge import start_browser_bridge
+from src.application.bridge import start_browser_bridge
 
 # Load YAML for UI display
 with open("config.yaml", "r") as f:
