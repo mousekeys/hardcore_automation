@@ -22,18 +22,18 @@ class ServerController:
 
     async def delete_world(self):
         await self.page.goto(self.config.server.files_url)
-        world_name = self.config.hardcore_plus.worlds_selector
+        world_name = self.config.hardcore_plus.world_folder
 
         try:
-            folder_link = self.page.get_by_text(world_name, exact=True)
+            folder_link = self.page.get_by_role("cell", name=world_name, exact=True)
             world_row = self.page.locator("tr").filter(has=folder_link)
             await world_row.locator("button").last.click()
-            await self.page.click("text=Delete")
-            await self.page.click('button:has-text("Delete files")')
+            await self.page.click('text=Delete')
+            await self.page.click('text=Delete')
             print(f"Deleted folder: {world_name}")
         except Exception as e:
             print(f"Error deleting world: {e}")
-
+            
     async def hardcore_reset(self):
         print("[HARDCORE PLUS] Player death detected! Resetting server...")
         await self.stop()
