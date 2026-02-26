@@ -1,0 +1,5 @@
+config==0.5.1
+pydantic==2.12.5
+pytest==9.0.2
+PyYAML==6.0.3
+schemas==0.7.1
