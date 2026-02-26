@@ -5,9 +5,10 @@ from pydantic import ValidationError
 from typing import Optional
 
 from schemas.config_schema import AppConfig
+from pathlib import Path
 
-
-CONFIG_YAML_PATH = "../src/config.yaml"
+# resolves to the actual src/config.yaml regardless of where pytest is run from
+CONFIG_YAML_PATH = Path(__file__).parent.parent / "src" / "config.yaml"
 
 
 def load_config_from_module() -> Optional[AppConfig]:
@@ -18,15 +19,13 @@ def load_config_from_module() -> Optional[AppConfig]:
     except ImportError:
         return None
 
-
 def load_config_from_yaml(path: str = CONFIG_YAML_PATH) -> AppConfig:
     """Load and validate config from a YAML file."""
     try:
         with open(path, "r") as f:
             raw = yaml.safe_load(f) or {}
     except FileNotFoundError:
-        pytest.fail(f"Config file not found: {path}")
-
+        pytest.fail(f"Config file not found: {path.resolve()}")
     try:
         return AppConfig.model_validate(raw)
     except ValidationError as e:
