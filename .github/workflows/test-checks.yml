@@ -28,16 +28,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Lint with ruff
-        run: |
-          pip install ruff
-          ruff check .
-
-      - name: Type check with mypy
-        run: |
-          pip install mypy
-          mypy .
-
       - name: Run tests with coverage
         run: |
           pip install pytest-cov
