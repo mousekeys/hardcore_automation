@@ -16,7 +16,7 @@ class BrowserSession:
     async def start(self) -> Page:
         self._playwright = await async_playwright().start()
         self._browser = await self._playwright.chromium.launch(
-            headless=True,
+            headless=False,
             args=[
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
