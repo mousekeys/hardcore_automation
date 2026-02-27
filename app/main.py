@@ -55,7 +55,3 @@ log_area.code("\n".join(st.session_state.logs))
 
 # Auto refresh every second to pick up new logs
 st.rerun() if st.button("Refresh logs") else None
-
-cmd = st.text_input("Console Command")
-if st.button("Execute"):
-    st.session_state.cmd_queue.put_nowait(cmd)
