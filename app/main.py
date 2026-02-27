@@ -3,9 +3,9 @@ import asyncio
 import threading
 from queue import Queue
 from src.bridge import start_browser_bridge
-from src.config_loader import load_config
+from src.config_loader import get_config
 
-config = load_config()
+config = get_config()
 
 st.set_page_config(page_title="Hardcore Plus Dashboard", layout="wide")
 st.title("Hardcore Plus Monitor")
