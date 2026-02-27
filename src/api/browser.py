@@ -15,10 +15,20 @@ class BrowserSession:
 
     async def start(self) -> Page:
         self._playwright = await async_playwright().start()
-        self._browser = await self._playwright.chromium.launch(headless=True)
+        self._browser = await self._playwright.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",   
+                "--disable-gpu",
+                "--single-process",         
+                "--no-zygote",
+            ]
+        )
         self.page = await self._browser.new_page()
         return self.page
-
+    
     async def login(self):
         await self.page.goto(self.config.auth.login_url)
         await self.page.fill('input[name="email"]', os.getenv("EMAIL"))

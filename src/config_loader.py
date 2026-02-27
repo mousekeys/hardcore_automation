@@ -7,7 +7,6 @@ from typing import Optional
 from src.schemas.config_schema import AppConfig
 from pathlib import Path
 
-# resolves to the actual src/config.yaml regardless of where pytest is run from
 CONFIG_YAML_PATH = Path(__file__).parent.parent / "src" / "config.yaml"
 
 
